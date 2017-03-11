@@ -56,7 +56,14 @@
 (use-package yasnippet
   :defer t
   :init
-  (add-hook 'prog-mode-hook 'yas-minor-mode))
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+
+  ;;; https://github.com/joaotavora/yasnippet
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"
+                           "~/dotfiles/.emacs.d/snippets"
+                           ))
+  (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
+  )
 
 ;; Package: clean-aindent-mode
 (use-package clean-aindent-mode
@@ -73,7 +80,7 @@
 (use-package ws-butler
   :init
   (add-hook 'prog-mode-hook 'ws-butler-mode)
-  (add-hook 'text-mode 'ws-butler-mode)
+  (add-hook 'text-mode 'ws-butler-mode)  ;;; Is this wrong? `text-mode-hook' instead?
   (add-hook 'fundamental-mode 'ws-butler-mode))
 
 ;; PACKAGE: comment-dwim-2

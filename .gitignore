@@ -1,0 +1,8 @@
+*~
+*#
+.python-environments/
+ac-comphist.dat
+ede-projects.el
+elpa/
+projectile-bookmarks.eld
+semanticdb/
