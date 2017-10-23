@@ -60,7 +60,10 @@
 
   ;;; https://github.com/joaotavora/yasnippet
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"
+                           "~/.emacs.d/elpa/yasnippet-20170310.1724/snippets" ; This will absolutely fail after updating `yasnippet-20170310.1724'.
+                           ;; "./snippets" ;; This relative path doesn't work maybe the current `el' file is not at the same dir.
                            "~/dotfiles/.emacs.d/snippets"
+                           "~/emacs-c-ide-demo/snippets"
                            ))
   (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
   )

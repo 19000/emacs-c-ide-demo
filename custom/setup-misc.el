@@ -82,6 +82,7 @@
 (setq-default c-basic-offset tab-width)
 (setq-default cperl-indent-level tab-width)
 
+(show-paren-mode 1)
 
 
 (setq-default message-log-max 10000)
@@ -108,5 +109,15 @@
                                         ; Need set for each buffer?
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
+;;; https://www.emacswiki.org/emacs/point-undo.el
+;; (require 'point-undo)
+;; (define-key global-map (kbd "C-<") 'point-undo)  ;; maybe need setup `input-decode-map' to work
+;; (define-key global-map (kbd "C->") 'point-redo)
+;; (define-key global-map [f5] 'point-undo)
+;; (define-key global-map [f6] 'point-redo)
+
+(set-register ?i (cons 'file "~/.emacs.d/init.el"))
+
+;; (global-hl-line-mode 1)
 
 (provide 'setup-misc)

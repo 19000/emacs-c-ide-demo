@@ -132,16 +132,22 @@
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Locate the helm-swoop folder to your path
     (use-package helm-swoop
-      :bind (("C-c h o" . helm-swoop)
-           ;;; Overwrote `helm-occur'
-             ("C-c s" . helm-multi-swoop-all)) ;;; Awesome!!
+      :init  ;; It won't work when put in `:config'
+      ;; When doing isearch, hand the word over to helm-swoop
+      (define-key isearch-mode-map (kbd "M-o") 'helm-swoop-from-isearch) ;;; Re-bind this `M-i', since it awkward for Dovrak layout, as well as `M-y'
+
+      :bind (("C-c h o" . helm-swoop)         ;;; Overwrote `helm-occur'
+             ("C-c s" . helm-multi-swoop-all) ;;; Awesome!!
+
+             ;;; Usage: https://github.com/jwiegley/use-package/issues/226#issuecomment-189053334
+             :map helm-swoop-map
+             ("M-o" . helm-multi-swoop-all-from-helm-swoop))
 
       :config
-      ;; When doing isearch, hand the word over to helm-swoop
-      (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch) ;;; Re-bind this `M-i', since it awkward for Dovrak layout, as well as `M-y'
-
+      ;; It won't work when put in `:init'
+      ;; Either `:config' or `:bind :map' is okay.
       ;; From helm-swoop to helm-multi-swoop-all
-      (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+      ;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
 
       ;; Save buffer when helm-multi-swoop-edit complete
       (setq helm-multi-swoop-edit-save t)  ;;; `helm-multi-swoop-edit' ? What's this
@@ -174,5 +180,7 @@
       (helm-projectile-on)
       (setq projectile-completion-system 'helm)
       (setq projectile-indexing-method 'alien))))
+
+(use-package helm-ag)
 
 (provide 'setup-helm)

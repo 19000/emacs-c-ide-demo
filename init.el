@@ -26,3 +26,5 @@
 (require 'setup-python)
 (require 'setup-git)
 (require 'setup-misc)
+(require 'setup-org)
+(require 'setup-terminal-keymapping)
