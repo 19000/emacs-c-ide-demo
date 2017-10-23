@@ -120,4 +120,10 @@
 
 ;; (global-hl-line-mode 1)
 
+(setq visible-bell t)
+
+(savehist-mode 1)
+(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+;; (setq savehist-file "~/.emacs.d/tmp/savehist")
+
 (provide 'setup-misc)

@@ -118,9 +118,10 @@
 ;;; Save current position to mark ring
     (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
 
+    ;;; helm minibuffer history eats backslashes in regex search
     ;; show minibuffer history with Helm
-    (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
-    (define-key minibuffer-local-map (kbd "M-n") 'helm-minibuffer-history)
+    ;; (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
+    ;; (define-key minibuffer-local-map (kbd "M-n") 'helm-minibuffer-history)
     ;;; minibuffer-local-map
 
     (define-key global-map [remap find-tag] 'helm-etags-select)
