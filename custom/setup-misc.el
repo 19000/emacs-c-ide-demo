@@ -45,12 +45,11 @@
 
 (defun leetcode-replace-newline ()
   (interactive)
-  (save-excursion (save-restriction
-                    (let ((message-log-max nil))
-                      (goto-char (point-min))
-                      (while (re-search-forward "\xd")
-                                        ;^M: C-x C-= Char: RET (13, #o15, #xd)
-                        (replace-match ""))))))
+  (save-excursion (save-restriction (let (message-log-max)
+                                      (ignore-errors  ; Suppress Error Message: Search failed: "^M"; Otherwise it needs to `setq' manually.
+                                        (goto-char (point-min))
+                                        (while (re-search-forward "\xd") ; ^M: C-x C-= Char: RET (13, #o15, #xd)
+                                          (replace-match "")))))))
 (defun pbpaste ()
   (interactive)
   (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t)
