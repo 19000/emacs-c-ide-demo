@@ -16,10 +16,13 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 (require 'setup-general)
+
+;; (require 'setup-ivy-counsel)
 (if (version< emacs-version "24.4")
     (require 'setup-ivy-counsel)
   (require 'setup-helm)
   (require 'setup-helm-gtags))
+
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)

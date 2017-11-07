@@ -40,10 +40,11 @@
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
+;;; This is fucking slow (in .py .cc .sql ...)
 ;; Package: projejctile
 (use-package projectile
   :init
-  (projectile-global-mode)
+  ;; (projectile-global-mode)
   (setq projectile-enable-caching t))
 
 ;; Package zygospore

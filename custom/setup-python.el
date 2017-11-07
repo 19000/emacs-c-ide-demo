@@ -1,7 +1,7 @@
 ;;(use-package elpy)
 (use-package jedi
   :init (progn
-          (jedi:install-server)
+          ;; (jedi:install-server)
           (setq jedi:complete-on-dot t)
           (add-hook 'python-mode-hook 'jedi:setup))
 

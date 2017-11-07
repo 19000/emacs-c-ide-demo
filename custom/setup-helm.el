@@ -120,8 +120,8 @@
 
     ;;; helm minibuffer history eats backslashes in regex search
     ;; show minibuffer history with Helm
-    ;; (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
-    ;; (define-key minibuffer-local-map (kbd "M-n") 'helm-minibuffer-history)
+    (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
+    (define-key minibuffer-local-map (kbd "M-n") 'helm-minibuffer-history)
     ;;; minibuffer-local-map
 
     (define-key global-map [remap find-tag] 'helm-etags-select)
@@ -136,6 +136,7 @@
       :init  ;; It won't work when put in `:config'
       ;; When doing isearch, hand the word over to helm-swoop
       (define-key isearch-mode-map (kbd "M-o") 'helm-swoop-from-isearch) ;;; Re-bind this `M-i', since it awkward for Dovrak layout, as well as `M-y'
+      (define-key isearch-mode-map (kbd "M-O") 'helm-multi-swoop-all-from-isearch)
 
       :bind (("C-c h o" . helm-swoop)         ;;; Overwrote `helm-occur'
              ("C-c s" . helm-multi-swoop-all) ;;; Awesome!!

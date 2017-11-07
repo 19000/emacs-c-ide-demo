@@ -28,7 +28,9 @@
   (defun google-this-url ()
     "URL for google searches."
     (concat google-this-base-url google-this-location-suffix "/search?ion=1&q=%s&gws_rd=cr&hl=en&num=30"))
-  :bind (("C-c C-g" . google-this-noconfirm)))
+  :bind (("C-c M-g" . google-this-noconfirm)))
+
+(use-package vimish-fold)
 
 
 (defun pbcopy (start end arg &optional interactive)
@@ -44,10 +46,11 @@
 (defun leetcode-replace-newline ()
   (interactive)
   (save-excursion (save-restriction
-                    (setq message-log-max nil)
-                    (goto-char (point-min))
-                    (while (re-search-forward "\xd") ;^M: C-x C-= Char: RET (13, #o15, #xd)
-                      (replace-match "")))))
+                    (let ((message-log-max nil))
+                      (goto-char (point-min))
+                      (while (re-search-forward "\xd")
+                                        ;^M: C-x C-= Char: RET (13, #o15, #xd)
+                        (replace-match ""))))))
 (defun pbpaste ()
   (interactive)
   (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t)
@@ -125,5 +128,23 @@
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
 ;; (setq savehist-file "~/.emacs.d/tmp/savehist")
+
+;;; Tool used for analysis json files. Move point to the upmost position using C-M-b.
+;;; Try all C-M-p/n, C-M-a/e, C-M-f/b
+(defun my-json-goto-parent ()
+  (interactive)
+  (push-mark)
+  (let ((prepoint -1))
+    (while (/= prepoint (point))
+      (setq prepoint (point))
+      (backward-sexp))))
+
+(defun my-run-mysql ()
+  (interactive)
+  (save-buffer)
+  (shell-command (format "mysql -tTv -hlocalhost -uroot < %s" (buffer-name))))
+;;; Error when init Emacs: no variabl `sql-mode-map'
+;; (define-key sql-mode-map (kbd "C-c C-c") 'my-run-mysql)
+
 
 (provide 'setup-misc)
