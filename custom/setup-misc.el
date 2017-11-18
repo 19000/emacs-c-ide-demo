@@ -142,8 +142,17 @@
   (interactive)
   (save-buffer)
   (shell-command (format "mysql -tTv -hlocalhost -uroot < %s" (buffer-name))))
+(defun my-run-psql ()
+  (interactive)
+  (save-buffer)
+  (shell-command (format "psql -d postgres -U postgres -h localhost --echo-all < %s" (buffer-name))))
 ;;; Error when init Emacs: no variabl `sql-mode-map'
 ;; (define-key sql-mode-map (kbd "C-c C-c") 'my-run-mysql)
+;; (define-key sql-mode-map (kbd "C-c C-c") 'my-run-psql)
+
+(use-package slime
+  :config
+  (setq inferior-lisp-program (executable-find "sbcl")))
 
 
 (provide 'setup-misc)
