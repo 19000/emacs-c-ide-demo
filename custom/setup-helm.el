@@ -72,9 +72,19 @@
           helm-locate-fuzzy-match t
           helm-display-header-line nil
 
-          helm-locate-recursive-dirs-command "mdfind -onlyin %s -name %s"
           helm-locate-fuzzy-match nil
-          helm-locate-command "mdfind -name %s %s")
+          )
+
+    (cond
+     ((string-equal system-type "darwin")
+      (setq
+       helm-locate-recursive-dirs-command "mdfind -onlyin %s -name %s"
+       helm-locate-command                "mdfind -name %s %s"))
+     ((string-equal system-type "gnu/linux")
+      (setq
+       ;; helm-locate-command "locate %s -e -A --regex %s"
+       helm-locate-command                "locate %s -e --regex %s")))
+
 
     (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
