@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: alert for mac os
+# key: alert
+# --
+osascript -e 'tell app "System Events" to display dialog "${1:Message}" with title "${2:Title}"'

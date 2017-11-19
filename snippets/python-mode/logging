@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: logging
+# key: logging
+# --
+import logging
+
+FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+logging.basicConfig(level=logging.INFO, format=FORMAT)
+logger = logging.getLogger('dbg-log.' + __name__)

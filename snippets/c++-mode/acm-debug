@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: acmdebug
+# key: acmdebug
+# --
+#ifdef DEBUG
+    freopen("test.txt", "r", stdin);
+    freopen("results.txt","w",stdout);
+#endif

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: properties
+# key: p
+# --
+:PROPERTIES:
+${1::${2:CATEGORY}: $3}$0
+:END:
