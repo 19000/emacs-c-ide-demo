@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: transaction-postgres
+# key: transaction
+# --
+\c ${1:db_name};
+
+\set autocommit off;
+begin;
+
+$0
+
+rollback;

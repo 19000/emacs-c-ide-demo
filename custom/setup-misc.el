@@ -156,11 +156,16 @@
   :config
   (setq inferior-lisp-program (executable-find "sbcl")))
 
-(use-package image+)
+;; (use-package image+)
 
 
 (global-hl-line-mode)
-(set-face-attribute 'hl-line nil :foreground nil :background "wheat")
+;; (set-face-attribute 'hl-line nil :foreground nil :background "wheat")
+;; (set-face-attribute 'hl-line nil :foreground nil :background "#005cbb")
+(set-face-attribute 'hl-line nil :foreground nil :background "#b1d1f3")
+;; (set-face-attribute 'hl-line nil :foreground nil :background "#dde9f6")
+;; (set-face-attribute 'hl-line nil :foreground nil :background "#eee9d3")
+;; (set-face-attribute 'hl-line nil :foreground nil :background "#e6dfcc")
 
 
 (provide 'setup-misc)
